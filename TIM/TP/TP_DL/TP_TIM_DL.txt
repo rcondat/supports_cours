@@ -1,0 +1,12 @@
+Introduction à Google Colaboratory : https://docs.google.com/presentation/d/1kwE9QsgGkzchGFBtPMQ3R1i6xXpyYq2T3nHPYmkKxTo/edit?usp=sharing
+
+Le lien du TP : https://colab.research.google.com/drive/1JR16xIbJpGfJrRCl6XeWEjyOFa4GOl0j
+
+Pré-requis : 
+
+1- Télécharger les 2 fichiers suivants : 
+- https://docs.google.com/uc?export=download&id=1rPWT50srOl2lyjyVozywlt5lveE-IXZW
+- https://docs.google.com/uc?export=download&id=1JicCas6BlptgiTA2cbKsYIFn6fzYwCNw
+
+2- Les importer dans votre drive
+La suite vous la retrouverez dans colab.
