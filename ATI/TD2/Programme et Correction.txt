@@ -1,0 +1,64 @@
+Programme du TD2 : Calibration de caméra
+- Rappel des formules pour la calibration de caméra (paramètres intrinsèques et extrinsèques)
+- TD1 : Exercices 6-11
+- Installation environnement de travail Python avec packages
+- Notebooks initiation Python/Matplotlib/Numpy/OpenCV
+- Notebook calibration
+
+=> TD beaucoup trop long, car l'installation de l'environnement de travail prend du temps ! Les notebooks sont souvent à faire chez eux, ils ne sont pas notés et c'est très guidé (quasi aucun code) !
+
+CORRECTION TD1
+
+EXERCICE 6
+
+1) 
+- du,dv: 6 um (dans les spécifications), unité mètre
+- ku,kv = 1/du,1/dv = 1.66e5 (unité 1/mètre)
+- u0 et v0 : Centre de l'image. Résolution de 752*480 (dans spécifications). Donc u0 = 376 et v0 = 240
+
+2)
+- alpha_u = f x ku = 8x10^-3 x 1.66 x 10^5 = 1.33333 x 10^2. Même résultat pour alpha_v
+
+EXERCICE 7
+
+1) Les tiges sont dans l'axe du tapis roulant, et sont donc alignées dans l'axe X. Du coup, en théorie, elles ont les mêmes coordonnées Y et Z.
+   Du coup, Y1 = Y2. En reprenant la formule de v, on a v1 = v2.
+
+2) u2-u1 = kv x f x (X2-X1) / Z1
+   => kv et f fixés, Z1 devient la Working Distance.
+
+   Sans calibrage, on a u4-u3 = kv x f x (X4-X3) / Z1. Et donc (u2-u1)/(u4-u3) = (X2-X1)/(X4-X3). Donc on peut calculer X2-X1 (tous les u sont calculés sur l'image, et X4-X3 est connu).
+
+EXERCICE 8
+Taille d'image : 512x680
+
+Calcul pour chaque point :
+- A : uA = 423.46708, vA = 362.69638. Le point (uA,vA) se situe dans l'image.
+- B : uB = 321.68952, VB = 158.97762. Le point (uB,vB) se situe dans l'image.
+- C : uC = 5461.4563, vC = 1279.4308. Le point (uC,vC) est TRES LOIN d'être dans l'image.
+
+EXERCICE 9
+alpha_u et alpha_v sont différents, donc ku et kv sont différents, donc du et dv différents, alors que le capteur a des pixels carrés. Donc ça va pas du tout !!!!
+
+EXERCICE 10
+
+Coordonnées P dans Rw : (Xp, Yp, Zp)_Rw = (50cm, 0, 0) = (0.5, 0, 0)
+
+Passage dans le plan caméra : définition de R et T.
+- Aucune rotation : on a juste un point à trouver, donc que de la translation.
+- Translation : Tx = Ty = 0, Tz = 5m
+=> Coordonnées P dans Rc : (Xp, Yp, Zp)_Rc = (0.5, 0, 5)
+
+Passage dans le plan numérique : f = 50 mm, du,dv = 24 um, u0=512, v0=384
+=> alpha_u = f/du = 2.083333 x 10^3, alpha_v pareil
+
+=> up = alpha_u * (Xp/Zp)_Rc + u0 = 720.3333333
+=> vp = alpha_v * (Yp/Zp)_Rc + v0 = v0 = 384
+
+EXERCICE 11
+
+1) Pixel size = Sensor Size / Image Resolution
+   => du = 6.4 mm / 800 = 0.008 mm = 8 um
+   => dv = 4.8 mm / 600 = 8 um
+
+2) alpha_u = f / du = 3125. alpha_v pareil

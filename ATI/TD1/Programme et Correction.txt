@@ -1,0 +1,143 @@
+Programme du TD1 : Mise en place d'un système de capteurs
+- Utilisation des 3 formules suivantes :
+	- Sensor Resolution =     2 x FOV                
+        	             ----------------
+			     Smallest Feature
+
+	(Smallest Feature m, FOV m, Sensor Resolution px)
+
+	- Focal Length x FOV = Sensor Size x Working Distance
+	(Focal Length m, FOV m, Sensor Size m, Working Distance m)
+
+	- Sensor Size = Sensor Resolution x Pixel Size
+	(Sensor Size m, Sensor Resolution px, Pixel Size m)
+
+- Objectifs :
+	- Savoir choisir la caméra adaptée pour la problématique
+	- Lire une fiche technique de caméra
+	- Placer correctement la caméra au sein du système de capteurs (distance de travail)
+
+Fichier TD1.pdf : 
+- Exercices 0 à 5
+
+Fichier TD2.pdf :
+- Exercice tri de gâteaux
+
+
+CORRECTION :
+
+TD1
+
+EXERCICE 0
+
+1) On constate que les images ont des FOV de plus en plus petites. Hors, les images ont été prises au même endroit, avec la même caméra, donc Sensor Size et Working Distance constant.
+   Du coup, plus la FOV est petite, plus la focal length est grande dans ces conditions.
+   => a) : 4 ou 6 mm
+   => b) : 6 ou 12 mm
+   => c) : 12 ou 25 mm
+
+2) Question pas très utile, puisque redite de la 1. Mais pour répondre, la focale est plus grande, donc 12 mm pour l'image 2.
+
+EXERCICE 1
+
+Données de l'exercice : 
+- FOV : 100 mm
+- Smallest Feature : 1mm
+
+=> Sensor Resolution (px) = 2 x FOV / Smallest Feature = 200 pixels. Ca veut dire qu'il faut au moins 200 px sur chaque côté pour une résolution correcte. Du coup, une résolution de 640x480 convient.
+
+EXERCICE 2
+
+Données de l'exercice :
+- Pixel size : 3.75 um x 3.75 um (micromètres)
+- Sensor Resolution : 1296x966 px
+
+=> Sensor Size = Sensor Resolution x Pixel Size = (3.75 x 10e-6 x 1296) x (375 x 10e-6 x 966) = 4.86 mm x 3.6225 mm
+
+EXERCICE 3
+
+Vu la gueule de l'image, c'est évident que non. La raison, pour être plus précis, c'est que l'objectif choisi a une taille trop petite. Du coup, ici, on a un vignetage : les régions du capteur en dehors de la région du format de l'objectif sont sombres.
+
+EXERCICE 4
+
+Données de l'exercice :
+- FOV : 508 x 381 mm => 635 mm en diagonale
+- Sensor Size : 8.47 mm (diagonale)
+- Working Distance : 0 => 889 mm
+
+=> Pour WD = 889 mm : Focal Length = SS x WD / FOV = 8.47 x 889 / 635 = 11.858 mm
+
+Le pb, c'est qu'on n'a pas d'objectifs avec une focale exacte de 11.858 mm. On va devoir donc choisir une focale plus petite, et ajuster la WD. Les objectifs classiques sont 4, 8, 12, 25 et 50 mm. Donc, avec une focale de 8 mm:
+ 
+=> WD = FL x FOV / SS = 8 x 635 / 8.47 = 599.76 mm
+
+NOTE : Dans la correction, c'est bizarre, car on prend la SS en diagonale (on peut pas trop choisir autre chose), et pour la FOV le côté le plus court (au lieu de la diagonale qui peut être calculée). Deux points embêtants : - L'approximation est peut-être courante, mais je ne la comprends pas ; - Quand bien même on peut faire cette approximation, faudrait plutôt prendre 508 que 381 mm (le côté le plus long, sinon, ça fausse les résultats !)
+
+EXERCICE 5
+
+Données de l'exercice :
+- FOV : 609.6 x 609.6 mm => 862 mm en diag
+- Sensor Size : 12.7 mm (diag)
+- WD : 1016 mm (fixe)
+
+=> Focal Lenght = SS x WD / FOV = 12.7 x 1016 / 862 = 14.96 mm
+
+Pb : là, on a une focale de 15 mm (pas courante...), mais surtout, une WD fixe. Du coup, ça bloque !! Conclusion : faut pas de WD fixe.
+
+TD2
+
+1) Dûr à dessiner là ^^ Bon, du coup, dessin sur le côté, cam au-dessus pointée vers le bas. Tapis en perpendiculaire (tout en longueur), et biscuit séparés dessus.
+
+2) Taille du gâteau : 75mm x 55 mm (+/- 2%)
+   Marge de 25 mm
+   Zone du gâteau : d1' = 1.02 x d1 + 2 x 25 mm = 126.5 mm
+                    d2' = 1.02 x d2 + 2 x 25 mm = 106.1 mm
+
+   Ratio idéal : d1'/d2' = 126.5/101.1 = 1.192
+   Parmi les ratios standards proposés, le plus proche est 4/3. Donc on va choisir ce format.
+
+3) Format 4/3, diagonale = 12.7 mm
+   On cherche x tel que (4x)^2 + (3x)^2 = (12.7mm)^2
+   => 25 x^2 = 161.29 mm^2
+   => x^2 = 6.4516 mm^2
+   => x = 2.54 mm
+   Longueur = 4 x 2.54 mm = 10.16 mm
+   Largeur = 3 x 2.54 mm = 7.62 mm
+
+4) Focal Length x FOV = Sensor Size x Working Distance
+
+- Caméra placée à 40 cm du tapis : WD = 40 cm = 400mm
+- Sensor Size : SSx = 10.16 mm, SSy = 7.62 mm
+- FOV : FOVx = 126.5 mm, FOVy = 106.1 mm
+
+=> Pour la longueur : Focale_x = SSx x WD / FOVx = 32.13 mm
+=> Pour la largeur : Focale_y = SSy x WD / FOVy = 28.73 mm
+
+Bon, du coup, il faut chosir quelle focale ? Bonne question ! 
+Si on prend Focale_x = 32.13 mm, alors ça modifie FOV_y = SSy x WD / Focale_x = 94.86 mm, ce qui est plus petit que ce que l'on souhaite (106.1 mm). Du coup, elle n'est pas adaptée pour la largeur.
+Si on prend Focale_y = 28.73 mm, FOV_y = 106.1 mm et par conséquent, FOV_x = SSx x WD / Focale_y = 141.45 mm, donc ça comprend notre FOV_x requise (126.5 mm). DU coup, on garde le 27.83 mm
+
+
+5) Focale = 25 mm
+Par conséquent : FOV_x = SSx x WD / Focale = 162.56 mm ; FOV_y = SSy x WD / Focale = 121.92 mm. Du coup, chaque image observe une longueur de 162.56 mm du convoyeur. Pour être sûr de capter chaque mm du convoyeur, il faut une vitesse de 1000 (mm/s) / 162.56 mm = 6.15 img/s. Avec cette fréquence, on est sûr que chaque mm du convoyeur est capté dans une image.
+
+Cependant, ça n'assure pas que le biscuit soit entier dans l'image ! Si c'est pas synchro, le biscuit peut être sur 2 images. Pour cela, il faut doubler la fréquence : la longueur du biscuit est de 75 mm +/- 2%. Du coup, par rapport à FOV_x, si le biscuit est coupé, il n'est que sur une moitié de l'image. En doublant la fréquence, on a alors la moitié droite de l'image t ainsi que la moitié gauche de l'image t+1, où on est sûr que le biscuit est inclus. Ca nous donne un FPS minimum de 12.3 img/s.
+
+Du coup, on va prendre une mesure standard de 15 img/s.
+
+6) Avec l'algo développé pour la détection des coins, l'erreur de détection est de 3 pixels, donc 6 pixels maximum (les deux coins dans une longueur).
+
+Les exigences de l'industriel implique de mesurer précisément la largeur (55 mm +/- 2%), donc au plus fin 2% de 55mm = 1.1 mm. Si 6 pixels représentent plus de 1.1 mm, cela peut invalider des résultats (biscuits bons ejectés, ou mauvais gardés). Du coup, il faut que 6 pixels représentent moins de 1.1 mm, donc que chaque pixel représente moins de 183 um. C'est la taille du pixel !!
+
+Sensor Size = Sensor Resolution x Pixel Size
+
+Sensor Size : 162.56 mm x 121.92 mm
+Pixel Size : 183 um (largeur et hauteur, pixels carrés !)
+
+Sensor Resolution : 
+- En longueur : 162.56 mm / 183 um = 887 pixels (on va dire 888, c'est plus simple)
+- En largeur : 121.92 mm / 183 um = 666 pixels
+
+Du coup, il faut au moins 888 x 666 pixels. Parmi les résolutions proposées, on va choisir 1024 x 768.
+
+7) Pixel Size = Sensor Size / Sensor Resolution = 10.16 mm/1024 x 7.62 mm/768 = 9.9 um x 9.9 um
